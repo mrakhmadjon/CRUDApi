@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CRUDApi.Models.Common;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace CRUDApi.Data.Contexts
@@ -10,7 +11,12 @@ namespace CRUDApi.Data.Contexts
 
         }
 
+        public StudentDbContext()
+        {
 
+        }
+
+        public virtual DbSet<StudentModel> Student { get; set; }
 
 
     }

@@ -1,7 +1,13 @@
+using CRUDApi.Data.Contexts;
+using CRUDApi.Data.IRepositories;
+using CRUDApi.Data.Repositories;
+using CRUDApi.Services.Interfaces;
+using CRUDApi.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,12 +32,19 @@ namespace CRUDApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<StudentDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"));
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CRUDApi", Version = "v1" });
             });
+
+
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

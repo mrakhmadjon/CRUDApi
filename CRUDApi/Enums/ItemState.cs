@@ -2,7 +2,7 @@
 {
     public enum ItemState
     {
-        Created,
+        Created = 1,
         Updated,
         Deleted
     }

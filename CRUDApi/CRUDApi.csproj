@@ -15,11 +15,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Data\IRepositories\" />
-    <Folder Include="Data\Repositories\" />
-    <Folder Include="Models\ViewModels\" />
-  </ItemGroup>
-
 </Project>
