@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CRUDApi.Controllers
 {
-    [Route("[controller],[action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
     {
